@@ -8,7 +8,7 @@
 
 DirtyShare is a "Peer to Peer" filesharing system written in pure Javascript with Socket.io and Node.js.
 
-It's called DirtyShare because it's dirty as hell across the whole stack, from the concept to the code to use case.
+It's called DirtyShare because it's dirty as hell across the whole stack, from the concept to the code to the use case.
 
 ## About
 
@@ -18,8 +18,9 @@ no data ever permanently stored on the web server. This makes it perfect for sen
 
 Ideally, the WebSockets will only be used to establish the P2P connections which will go over the HTML5 PeerConnection
 object, however, no modern browsers support this feature yet. Hopefully, it will become available within the next 6
-months or so, and we will be ready for it. Let's make a purely browser based, ad-free, Free and Open Source private filesharing
-system!
+months or so, and we will be ready for it 
+
+Let's make a purely browser based, ad-free, Free and Open Source private filesharing system!
 
 ## Demo
 
