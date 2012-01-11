@@ -1,19 +1,27 @@
 // Requirements
 
 var app = require('express').createServer()
-  ,	express = require('express')
-  , io = require('socket.io').listen(app);
+  , express = require('express')
+  , io = require('socket.io').listen(app)
+  , jqtpl = require("jqtpl");
+
+
+// Load the config file
+var config = require('config').Server;
 
  // App Stuff
 app.use('/public', express.static(__dirname + '/public'));
-app.listen(2000);
+app.listen(config.port);
+app.set("view engine", "html");
+app.set("view options", {layout: false});
+app.register(".html", require("jqtpl").express);
 
 app.get('/', function (req, res) {
   res.redirect('/' + randomString());
 });
 
 app.get('/:hash', function (req, res) {
-  res.sendfile(__dirname + '/index.html');
+  res.render (__dirname + '/index', {domain: config.siteDomain});
 });
 
 // P2P Stuff
