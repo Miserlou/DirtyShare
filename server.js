@@ -4,9 +4,12 @@ var app = require('express').createServer()
   ,	express = require('express')
   , io = require('socket.io').listen(app);
 
+// Load the config file
+var config = require('config').Server;
+
  // App Stuff
 app.use('/public', express.static(__dirname + '/public'));
-app.listen(2000);
+app.listen(config.port);
 
 app.get('/', function (req, res) {
   res.redirect('/' + randomString());
