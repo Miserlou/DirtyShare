@@ -1,0 +1,10 @@
+{
+  "name": "dirtyshare",
+  "description": "Peer to Peer File Sharing with Node and Socket.io",
+  "author": "Rich Jones <rich@gun.io>",
+  "dependencies": {
+    "socket.io": "0.8.x",
+    "express": "2.5.x",
+  },
+  "engine": "node >= 0.4.1"
+}

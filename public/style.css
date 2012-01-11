@@ -1,0 +1,208 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+	font-family: Helvetica;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+a{
+	color: #dd0000;
+	text-decoration: underline;
+}
+
+#container{
+		
+}
+
+#header{
+	font-size: 8em;
+	text-align: center;
+	font-family: Helvetica;
+	padding-top:20px;
+	padding-bottom: 20px;
+	letter-spacing:10px;
+}
+
+#subheader{
+	font-size: 2.7em;
+	text-align: center;
+	font-family: 'Monsieur La Doulaise', cursive;
+	padding-bottom: 20px;
+}
+
+#description{
+	font-size: 1.1em;
+	text-align: center;
+	padding-bottom: 40px;
+	width: 700px;
+	margin: 0 auto;
+	letter-spacing:1px;
+	line-height: 1.3em;
+	padding-top: 20px;
+}
+
+#lower{
+	font-size: 1.1em;
+	text-align: center;
+	padding-top: 20px;
+	width: 700px;
+	margin: 0 auto;
+	letter-spacing:1px;
+	line-height: 1.3em;
+	color:#999999;
+}
+
+#infoholder{
+    text-align: center;
+    width: 800px;
+	text-align: center;
+    margin: 0 auto;
+    display: block;
+    color: #BBBBBB;
+    padding: 5px;
+}
+
+#clicky{
+    height: 200px;
+}
+
+#host{
+    text-align: center;
+    width: 380px;
+    font-size: 1.2em;
+	text-align: center;
+	font-family: Helvetica;
+    display: inline-block;
+}
+
+#peer{
+    text-align: center;
+    width: 380px;
+    font-size: 1.2em;
+	text-align: center;
+	font-family: Helvetica;
+    margin: 0 auto;
+    display: inline-block;
+}
+
+#drop_zone {
+    border: 2px dashed #BBBBBB;
+    border-radius: 5px 5px 5px 5px;
+    color: #BBBBBB;
+    padding: 25px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    text-align: center;
+    width: 800px;
+    font-size: 1.3em;
+	text-align: center;
+	font-family: Helvetica;
+    margin: 0 auto;
+    cursor: pointer;
+}
+
+#fileslist{
+	height: 200px;
+	overflow: auto;
+}
+
+#filestable {
+	width: 700px;
+	padding: 0;
+	margin: 0 auto;
+	text-align: center;
+	table-layout: fixed;
+}
+
+th {
+	border-bottom: 1px solid #dddddd;
+	letter-spacing: 2px;
+	padding: 6px 6px 6px 12px;
+	color: #BBBBBB;
+}
+
+th.nobg {
+	border-top: 0;
+	border-left: 0;
+	border-bottom: 1px solid #dddddd;
+	background: none;
+	text-align: left;
+	color: #BBBBBB;
+	overflow: hidden;              /* "overflow" value must be different from "visible" */   
+  	text-overflow:    ellipsis;  
+}
+
+td {
+	border-bottom: 1px solid #dddddd;
+	background: #fff;
+	padding: 6px 6px 6px 12px;
+	color: #BBBBBB;
+}
+
+
+td.alt {
+	background: #dddddd;
+	color: #dddddd;
+}
+
+th.spec {
+	border-left: 1px solid #dddddd;
+	border-top: 0;
+	text-align: left;
+	color: #000000;
+  	overflow: hidden;              /* "overflow" value must be different from "visible" */   
+  	text-overflow:    ellipsis;  
+  	width: 60%;
+}
+
+tr{
+	margin: 0 auto;
+}
+
+td.end {
+	border-right: 1px solid #dddddd;
+}
+
+th.specalt {
+	border-left: 1px solid #dddddd;
+	border-top: 0;
+	color: #dddddd;
+	margin: 0 auto;
+}
