@@ -6,7 +6,8 @@
   "dependencies": {
     "socket.io": "0.8.x",
     "express": "2.5.x",
-    "config": "0.4.9"
+    "config": "0.4.9",
+    "jqtpl": "1.0.7"
   },
   "engine": "node >= 0.4.1"
 }
