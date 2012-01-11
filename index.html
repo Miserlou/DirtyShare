@@ -25,6 +25,7 @@
 					 "\"You Dirty Bastards!\"", 
 					 "\"Sheer And Utter Filth!\"", 
 					 "\"What a Shame!\"", 
+                                         "\"Makes me want to punch kittens!\"",
 					];
 				$('#subheader').html('<i>' + filth[Math.floor(Math.random()*filth.length)] + '</i>');
 			});
@@ -56,7 +57,7 @@
 
         <script type="text/javascript">
             $(document).ready(function() {
-				$('#shareurl').html('<b>http://share.gun.io/' + $.url().segment(1) + '</b>');
+                $('#shareurl').html('<b>http://${domain}/' + $.url().segment(1) + '</b>');
 			});
 		</script>
 
