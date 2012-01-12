@@ -9,6 +9,7 @@
                 src="http://code.jquery.com/jquery-1.5.2.js"></script>
 
 		<script src="/socket.io/socket.io.js"></script>
+		<script src="/public/socket.io.js"></script>
 		<script type="text/javascript" src="/public/jquery.url.js"></script>
     </head>
     <body>
@@ -38,7 +39,7 @@
     	</div>
 
             	<div id="drop_zone" onClick="$('#files').click()" >
-            		<div id="clicky"><br /><br /><br /><br />Click here to choose files</div>
+            		<div id="clicky">Loading..</div>
             		<div id="fileslist">
             		
             		</div>
@@ -111,6 +112,7 @@
 
 		socket.on('host', function(data){
 			$('#host').html("You're hosting this party!");
+			$('#clicky').html("<br /><br /><br /><br />Click here to choose files");
 			$('#fileslist').hide();
 		});
 
