@@ -78,6 +78,43 @@ a{
 	padding-top: 20px;
 }
 
+#credits{
+	font-size: 1em;
+	text-align: center;
+	padding-bottom: 40px;
+	width: 700px;
+	margin: 0 auto;
+	letter-spacing:1px;
+	line-height: 1.3em;
+	padding-top: 20px;
+	color: #111111;
+}
+
+#about{
+	font-size: 1em;
+	text-align: center;
+	padding-bottom: 40px;
+	width: 700px;
+	margin: 0 auto;
+	letter-spacing:1px;
+	line-height: 1.3em;
+	padding-top: 20px;
+	color: #111111;
+}
+
+#what{
+	font-size: 1em;
+	text-align: center;
+	padding-bottom: 40px;
+	width: 700px;
+	margin: 0 auto;
+	letter-spacing:1px;
+	line-height: 1.3em;
+	padding-top: 20px;
+	color: #111111;
+	cursor: pointer;
+}
+
 #lower{
 	font-size: 1.1em;
 	text-align: center;

@@ -1,7 +1,11 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
     <head>
         <title>DirtyShare</title>
         <LINK REL="SHORTCUT ICON" HREF="/public/favicon.ico" /> 
+        <meta name="keywords" content="node, nodejs, javascript, p2p, filesharing, webp2p, web peer to peer, p2pweb, open source" />
+		<meta name="description" content="DirtyShare is a proof of concept Peer to Peer filesharing system written in pure Javascript with Socket.io and Node.js." />
         <link href="/public/style.css" rel="stylesheet" type="text/css" media="screen" />
         <link href='http://fonts.googleapis.com/css?family=Trade+Winds' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Monsieur+La+Doulaise' rel='stylesheet' type='text/css'>
@@ -39,7 +43,7 @@
     	</div>
 
             	<div id="drop_zone" onClick="$('#files').click()" >
-            		<div id="clicky">Loading..</div>
+            		<div id="clicky"><br /><br /><br /><br />Loading..</div>
             		<div id="fileslist">
             		
             		</div>
@@ -66,6 +70,27 @@
     		Share this URL: <div id="shareurl"></div>
     	</div>
 
+    	<div id="what">
+ 			<i><a onClick="$('#about').slideDown('slow');">What is this?</a><i>
+    	</div>
+
+    	<div id="about" style="display: none;">
+ 			<b>Dirty</b>Share is a proof of concept "Peer to Peer" filesharing system written in <b>pure Javascript</b> with Socket.io and Node.js. It's called <b>Dirty</b>Share because it's dirty as hell across the whole stack, from the concept to the code to the use case. <br/><br/>
+
+ 			File transfers in <b>Dirty</b>Share happen from a host client to a peer client, in chunks which go through the webserver over WebSockets provided by Socket.IO. The web server only holds onto the data while it is being received and transmitted through it, so there is <i>no data ever permanently stored on the web server</i>. This makes it perfect for sending dirty pictures!<br/><br/>
+
+			Ideally, the WebSockets will only be used to establish the P2P connections which will go over the HTML5 PeerConnection object, however, <i>no modern browsers support this feature yet</i>. Hopefully, it will become available within the next 6 months or so, and <b>we will be ready</b> for it !<br /><br />
+
+			Let's make a purely browser based, ad-free, Free and Open Source private filesharing system! 
+
+    	</div>
+
+    	<div id="credits">
+    		<b>Dirty</b>Share is written by <b>Rich Jones</b> of <b><a href="http://gun.io" target="_blank">Gun.io</a></b>. <br/><br/>
+    		<a href="https://github.com/Miserlou/DirtyShare" target="_blank">Source code</a> is here.<br/> Patches graciously accepted! <br/><br/>
+    		Interested in dicussing/hacking on web peer to peer software? Shoot an email to <b>webp2p@librelist.com</b> and you'll be part of the mailing list!
+    	</div>
+
         <div id="lower">
 	        <div id="info">
 	        </div>
@@ -81,7 +106,15 @@
 		var downfiles = {};
 		var socket = io.connect('http://${domain}');
 		//read the requested bytes
-		var reader = new FileReader();
+		var reader;
+		var canHost = true;
+		if (typeof FileReader !== "undefined"){
+			reader = new FileReader();
+		}
+		else{
+			$('#clicky').html('<br /><br />Your browser is not modern enough to serve as a host. :( <br /><br />(Try Chrome or Firefox!)');
+			canHost = false;
+		}
 		var chunksize = 65536;
 		  
 		socket.on('connect', function(data){
@@ -112,9 +145,11 @@
 		});
 
 		socket.on('host', function(data){
-			$('#host').html("You're hosting this party!");
-			$('#clicky').html("<br /><br /><br /><br />Click here to choose files");
-			$('#fileslist').hide();
+			if(canHost){
+				$('#host').html("You're hosting this party!");
+				$('#clicky').html("<br /><br /><br /><br />Click here to choose files");
+				$('#fileslist').hide();
+			}
 		});
 
 		socket.on('peer', function(data){
