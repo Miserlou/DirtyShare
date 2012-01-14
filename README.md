@@ -36,12 +36,13 @@ and you'll be part of the discussion mailing list! [(Archives here.)](http://lib
 
 ## TODO
 
-* Clean it up.
+* Work on doing proper PeerConnection based transfers when builds are available.
+* Data storgae should use FileSystem instead of the DOM. Firefox need to get their ass in gear on this one. 
+* Clean it up. It's a little dirty.
 * Send as little data as possible.
-* Find the optimal size for chunking.
+* Find the optimal size for chunking. Currently set at 64Kb - this is arbitrary.
 * Security, of any kind.
 * Drag and drop of files, so my roommate shuts up about it.
-* Work on doing proper PeerConnection based transfers when builds are available.
 
 ## License
 

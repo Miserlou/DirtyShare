@@ -79,7 +79,10 @@
 		var fid = 0;
 		var files = {};
 		var downfiles = {};
-		var socket = io.connect('http://localhost');
+		var socket = io.connect('http://${domain}');
+		//read the requested bytes
+		var reader = new FileReader();
+		var chunksize = 65536;
 		  
 		socket.on('connect', function(data){
 			socket.emit('joiner', $.url().segment(1));	
@@ -95,8 +98,6 @@
 	   			});
 	   		files = {};
 			files = JSON.parse(data);
-			console.log("Got files");
-			console.log(files);
 			for (var file in files) {
 				console.log(file);
 			  if (files.hasOwnProperty(file)) {
@@ -147,22 +148,21 @@
 		});
 
 		socket.on('begintransfer', function(file, chunk){
-			$('#info').append("Begining Transfer..");
-
-			console.log("Transfer request. Transmiting data.")
+			if(chunk == 0){
+				$('#info').append("Begining Transfer..");
+			}
 
 			fileholder= files[file];
-			fileo= files[file][3];
-			console.log(fileholder);
+			fileo= files[file][3]; //ugly
 
-			//read the requested bytes
-			var reader = new FileReader();
+			start = chunk * chunksize;
 
-			start = 0;
-			stop = parseInt(fileholder[1]) - 1;
-
-			console.log(start);
-			console.log(stop);
+			if((parseInt(fileholder[1]) - 1) <= start + chunksize - 1){
+				stop = parseInt(fileholder[1]) - 1;
+			}
+			else{
+				stop = start + chunksize - 1;
+			}
 
 			// If we use onloadend, we need to check the readyState.
 			reader.onloadend = function(evt) {
@@ -187,17 +187,23 @@
 
 		socket.on('datatransfer', function(data, file, chunk){
 			f = downfiles[file];
-			f.data += data;
+			f.data = f.data + data;
 			if(f.chunks == chunk){
 				var fspan = "#fidspan" + f.fid;
 				$(fspan).html('');
 				$(fspan).hide();
 
-				var f = "#fidsave" + f.fid;
-				$(f).show();
+				var fsave = "#fidsave" + f.fid;
+				$(fsave).show();
+				$(fsave).attr('href', $(fsave).attr('href') + encode64(f.data));
+				$('#info').append("Transfer finished!");
 				
-				$(f).attr('href', $(f).attr('href') + encode64(data));
-				
+			}
+			else{
+				var fspan = "#fidspan" + f.fid;
+				$(fspan).html(Math.floor(((chunk/f.chunks) * 100)) + '%');
+				var nextchunk = parseInt(chunk);
+				socket.emit('begintransfer', file, nextchunk+1);
 			}
 		});
 			
@@ -207,8 +213,12 @@
 			f = "#fid" + fid;
 			$(f).hide();
 
-			console.log("File is..");
-			downfiles[file] = {data:'', chunk:0, chunks:0, fid:fid};
+			var chunks = size/chunksize;
+			if(chunks% 1 != 0){
+				chunks = Math.floor(chunks) + 1;
+			}
+
+			downfiles[file] = {data:'', chunk:0, chunks:chunks, fid:fid};
 			socket.emit('begintransfer', file, 0);
 		};
 

@@ -8,6 +8,7 @@ var app = require('express').createServer()
 
 // Load the config file
 var config = require('config').Server;
+io.set('log level', 1); 
 
  // App Stuff
 app.use('/public', express.static(__dirname + '/public'));
@@ -81,16 +82,12 @@ io.sockets.on('connection', function (socket) {
 
 	socket.on('begintransfer', function (file, chunk) {
 		if(socket.isPeer && socket.hoster != undefined){
-			console.log("Attemping to begin xfer");
 			socket.hoster.emit('begintransfer', file, chunk);
-			console.log("Xfer request fired");
 	   	}
 	});
 
 	socket.on('datatransfer', function (data, file, chunk) {
 		if(socket.isHost && socket.peer != undefined){
-			console.log('Transfering data of file ' + file);
-			console.log('chunk ' + chunk);
 			socket.peer.emit('datatransfer', data, file, chunk);
 	   	}
 	});

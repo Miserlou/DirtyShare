@@ -2,7 +2,7 @@
   "name": "dirtyshare",
   "description": "Peer to Peer File Sharing with Node and Socket.io",
   "author": "Rich Jones <rich@gun.io>",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "dependencies": {
     "socket.io": "0.8.x",
     "express": "2.5.x",
