@@ -8,7 +8,7 @@ var app = require('express').createServer()
 
 // Load the config file
 var config = require('config').Server;
-io.set('log level', 1); 
+io.set('log level', 1);
 
  // App Stuff
 app.use('/public', express.static(__dirname + '/public'));
@@ -97,7 +97,7 @@ io.sockets.on('connection', function (socket) {
 
 // Utilities
 function randomString() {
-	var chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
+	var chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghijklmnopqrstuvwxyz";
 	var string_length = 8;
 	var randomstring = '';
 	for (var i=0; i<string_length; i++) {
